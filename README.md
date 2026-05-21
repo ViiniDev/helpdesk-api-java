@@ -28,7 +28,8 @@ API REST para gerenciamento de chamados de suporte. O projeto foi criado como um
 ## Como Executar
 
 ```bash
-mvn spring-boot:run
+mvn clean package
+java -jar target/helpdesk-api-java-0.0.1-SNAPSHOT.jar
 ```
 
 Swagger:
@@ -40,7 +41,8 @@ http://localhost:8080/docs
 ## Perfil PostgreSQL
 
 ```bash
-mvn spring-boot:run -Dspring-boot.run.profiles=postgres
+mvn clean package
+java -jar target/helpdesk-api-java-0.0.1-SNAPSHOT.jar --spring.profiles.active=postgres
 ```
 
 Variáveis:
