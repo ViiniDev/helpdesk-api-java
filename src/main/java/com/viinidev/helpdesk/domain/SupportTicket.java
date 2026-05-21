@@ -100,22 +100,28 @@ public class SupportTicket {
     }
 
     public void assignTo(String technician) {
+        ensureCanBeChanged();
         this.assignedTo = technician;
         this.status = TicketStatus.IN_PROGRESS;
         touch();
     }
 
     public void changeStatus(TicketStatus status) {
-        if (this.status == TicketStatus.CLOSED) {
-            throw new IllegalStateException("Closed tickets cannot be changed.");
-        }
+        ensureCanBeChanged();
         this.status = status;
         touch();
     }
 
     public void addComment(String author, String message) {
+        ensureCanBeChanged();
         this.comments.add(new TicketComment(this, author, message));
         touch();
+    }
+
+    private void ensureCanBeChanged() {
+        if (this.status == TicketStatus.CLOSED) {
+            throw new IllegalStateException("Closed tickets cannot be changed.");
+        }
     }
 
     private void touch() {
