@@ -22,10 +22,11 @@ API REST para gerenciamento de chamados de suporte. O projeto foi criado como um
 - Bean Validation
 - H2 Database
 - PostgreSQL
+- Docker e Docker Compose
 - Maven
 - Swagger/OpenAPI
 
-## Como Executar
+## Como Executar Localmente
 
 ```bash
 mvn clean package
@@ -38,7 +39,20 @@ Swagger:
 http://localhost:8080/docs
 ```
 
-## Perfil PostgreSQL
+## Como Executar com Docker
+
+```bash
+cp .env.example .env
+docker compose up --build
+```
+
+API:
+
+```text
+http://localhost:8080
+```
+
+## Perfil PostgreSQL sem Docker
 
 ```bash
 mvn clean package
