@@ -30,6 +30,7 @@ public class TicketService {
         return TicketResponse.from(ticketRepository.save(ticket));
     }
 
+    @Transactional(readOnly = true)
     public List<TicketResponse> list(TicketStatus status, TicketPriority priority) {
         List<SupportTicket> tickets;
         if (status != null) {
@@ -42,6 +43,7 @@ public class TicketService {
         return tickets.stream().map(TicketResponse::from).toList();
     }
 
+    @Transactional(readOnly = true)
     public TicketResponse getById(Long id) {
         return TicketResponse.from(getEntity(id));
     }
